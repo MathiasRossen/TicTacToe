@@ -31,12 +31,13 @@ namespace TicTacToe.Services
             var rowOneChar = gameBoard[0, 0];
             var rowTwoChar = gameBoard[1, 0];
             var rowThreeChar = gameBoard[2, 0];
-            if (rowOneChar == rowTwoChar &&
-                rowTwoChar == rowThreeChar)
+            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
+                rowThreeChar == 'X')
             {
                 return rowOneChar;
             }
             return SymbolForNoWinner;
+
         }
 
         private static char CheckForThreeInARowInHorizontalRow(char[,] gameBoard)
@@ -44,11 +45,28 @@ namespace TicTacToe.Services
             var columnOneChar = gameBoard[0, 0];
             var columnTwoChar = gameBoard[0, 1];
             var columnThreeChar = gameBoard[0, 2];
-            if (columnOneChar == columnTwoChar && 
-                columnTwoChar == columnThreeChar)
+            if (columnOneChar == 'X' && columnTwoChar == 'X' && 
+                columnThreeChar == 'X')
             {
                 return columnOneChar;
             }
+            columnOneChar = gameBoard[1, 0];
+            columnTwoChar = gameBoard[1, 1];
+            columnThreeChar = gameBoard[1, 2];
+            if (columnOneChar == 'X' && columnTwoChar == 'X' &&
+                columnThreeChar == 'X')
+            {
+                return columnOneChar;
+            }
+            columnOneChar = gameBoard[2, 0];
+            columnTwoChar = gameBoard[2, 1];
+            columnThreeChar = gameBoard[2, 2];
+            if (columnOneChar == 'X' && columnTwoChar == 'X' &&
+                columnThreeChar == 'X')
+            {
+                return columnOneChar;
+            }
+
             return SymbolForNoWinner;
         }
 

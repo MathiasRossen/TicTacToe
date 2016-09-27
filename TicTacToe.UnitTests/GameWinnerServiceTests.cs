@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using NUnit.Framework;
 using TicTacToe.Services;
 
 namespace TicTacToe.UnitTests
 {
-    [TestFixture]
+    [TestClass]
     public class GameWinnerServiceTests
     {
         private IGameWinnerService _gameWinnerService;
         private char[,] _gameBoard;
         
-        [SetUp]
+        [TestInitialize]
         public void SetupUnitTests()
         {
             _gameWinnerService = new GameWinnerService();
@@ -24,7 +25,7 @@ namespace TicTacToe.UnitTests
                       {' ', ' ', ' '}
                   };
         }
-        [Test]
+        [TestMethod]
         public void NeitherPlayerHasThreeInARow()
         {
             const char expected = ' ';            
@@ -32,7 +33,7 @@ namespace TicTacToe.UnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
+        [TestMethod]
         public void PlayerWithAllSpacesInTopRowIsWinner()
         {
             const char expected = 'X';
@@ -44,7 +45,7 @@ namespace TicTacToe.UnitTests
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
 
-        [Test]
+        [TestMethod]
         public void PlayerWithAllSpacesInFirstColumnIsWinner()
         {
             const char expected = 'X';
@@ -56,7 +57,7 @@ namespace TicTacToe.UnitTests
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
 
-        [Test]
+        [TestMethod]
         public void PlayerWithThreeInARowDiagonallyDownAndToRightIsWinner()
         {
             const char expected = 'X';

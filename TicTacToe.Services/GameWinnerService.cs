@@ -36,6 +36,22 @@ namespace TicTacToe.Services
             {
                 return rowOneChar;
             }
+            rowOneChar = gameBoard[0, 1];
+            rowTwoChar = gameBoard[1, 1];
+            rowThreeChar = gameBoard[2, 1];
+            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
+                rowThreeChar == 'X')
+            {
+                return rowOneChar;
+            }
+            rowOneChar = gameBoard[0, 2];
+            rowTwoChar = gameBoard[1, 2];
+            rowThreeChar = gameBoard[2, 2];
+            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
+                rowThreeChar == 'X')
+            {
+                return rowOneChar;
+            }
             return SymbolForNoWinner;
 
         }
@@ -81,8 +97,16 @@ namespace TicTacToe.Services
             var cellOneChar = gameBoard[0, 0];
             var cellTwoChar = gameBoard[1, 1];
             var cellThreeChar = gameBoard[2, 2];
-            if (cellOneChar == cellTwoChar &&
-                cellTwoChar == cellThreeChar)
+            if (cellOneChar == 'X' && cellTwoChar == 'X' &&
+                cellThreeChar == 'X')
+            {
+                return cellOneChar;
+            }
+            cellOneChar = gameBoard[0, 2];
+            cellTwoChar = gameBoard[1, 1];
+            cellThreeChar = gameBoard[2, 0];
+            if (cellOneChar == 'X' && cellTwoChar == 'X' &&
+                cellThreeChar == 'X')
             {
                 return cellOneChar;
             }

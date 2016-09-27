@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -125,7 +125,7 @@ namespace TicTacToe.UnitTests
             };
 
             var actual = _gameWinnerService.Validate(_gameBoard);
-            Assert.AreEqual(expected.ToString(), actual.ToString());
+            Assert.AreEqual('X', actual.ToString());
         }
 
         [TestMethod]

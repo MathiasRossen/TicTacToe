@@ -85,7 +85,7 @@ namespace TicTacToe.Services
 
             for(int rowNum = 0; rowNum < 3; rowNum++)
             {
-                if (gameBoard[rowNum, 0] == 'X' && gameBoard[rowNum, 1] == 'X' && gameBoard[rowNum, ] == 'X')
+                if (gameBoard[rowNum, 0] == 'X' && gameBoard[rowNum, 1] == 'X' && gameBoard[rowNum, 2] == 'X')
                     return 'X';
             }
 

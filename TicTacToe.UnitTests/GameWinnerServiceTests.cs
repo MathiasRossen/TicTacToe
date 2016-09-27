@@ -127,5 +127,26 @@ namespace TicTacToe.UnitTests
             var actual = _gameWinnerService.Validate(_gameBoard);
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
+
+        [TestMethod]
+        public void NooneWins()
+        {
+            _gameBoard = new char[3, 3] {
+                {' ', ' ', ' '},
+                {' ', 'X', 'X'},
+                {'X', ' ', ' '},
+            };
+
+            Assert.AreEqual(" ", _gameWinnerService.Validate(_gameBoard).ToString());
+
+            _gameBoard = new char[3, 3] {
+                {'X', ' ', 'X'},
+                {' ', 'X', ' '},
+                {' ', ' ', ' '},
+            };
+
+            Assert.AreEqual(" ", _gameWinnerService.Validate(_gameBoard).ToString());
+        }
+
     }
 }

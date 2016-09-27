@@ -41,7 +41,7 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', ' '}
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', ' '}
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', ' '},
                 {'X', 'X', 'X'},
             };
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace TicTacToe.UnitTests
                 {'X', ' ', ' '},
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace TicTacToe.UnitTests
                 {' ', 'X', ' '},
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -100,7 +100,7 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', 'X'},
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -112,7 +112,7 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', 'X'},
             };
 
-            Assert.AreEqual("X", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual('X', _gameWinnerService.Validate(_gameBoard));
         }
 
         [TestMethod]
@@ -125,7 +125,7 @@ namespace TicTacToe.UnitTests
             };
 
             var actual = _gameWinnerService.Validate(_gameBoard);
-            Assert.AreEqual('X', actual.ToString());
+            Assert.AreEqual('X', actual);
         }
 
         [TestMethod]

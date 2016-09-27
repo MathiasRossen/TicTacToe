@@ -5,12 +5,7 @@ using System.Text;
 
 namespace TicTacToe.Services
 {
-    public interface IGameWinnerService
-    {
-        char Validate(char[,] gameBoard);
-    }
-
-    public class GameWinnerService : IGameWinnerService
+    public class GameWinnerServiceMAT : IGameWinnerService
     {
         private const char SymbolForNoWinner = ' ';
 
@@ -31,48 +26,24 @@ namespace TicTacToe.Services
             var rowOneChar = gameBoard[0, 0];
             var rowTwoChar = gameBoard[1, 0];
             var rowThreeChar = gameBoard[2, 0];
-            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
-                rowThreeChar == 'X')
+            if (rowOneChar == rowTwoChar &&
+                rowTwoChar == rowThreeChar)
             {
                 return rowOneChar;
             }
             return SymbolForNoWinner;
-
         }
 
         private static char CheckForThreeInARowInHorizontalRow(char[,] gameBoard)
         {
-            //var columnOneChar = gameBoard[0, 0];
-            //var columnTwoChar = gameBoard[0, 1];
-            //var columnThreeChar = gameBoard[0, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' && 
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-            //columnOneChar = gameBoard[1, 0];
-            //columnTwoChar = gameBoard[1, 1];
-            //columnThreeChar = gameBoard[1, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' &&
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-            //columnOneChar = gameBoard[2, 0];
-            //columnTwoChar = gameBoard[2, 1];
-            //columnThreeChar = gameBoard[2, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' &&
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-
-            for(int rowNum = 0; rowNum < 3; rowNum++)
+            var columnOneChar = gameBoard[0, 0];
+            var columnTwoChar = gameBoard[0, 1];
+            var columnThreeChar = gameBoard[0, 2];
+            if (columnOneChar == columnTwoChar && 
+                columnTwoChar == columnThreeChar)
             {
-                if (gameBoard[rowNum, 0] == 'X' && gameBoard[rowNum, 1] == 'X' && gameBoard[rowNum, ] == 'X')
-                    return 'X';
+                return columnOneChar;
             }
-
             return SymbolForNoWinner;
         }
 

@@ -45,6 +45,30 @@ namespace TicTacToe.UnitTests
         }
 
         [TestMethod]
+        public void PlayerWithAllSpacesInSecondRowIsWinner()
+        {
+            const char expected = 'X';
+            for (var rowIndex = 0; rowIndex < 3; rowIndex++)
+            {
+                _gameBoard[1, rowIndex] = expected;
+            }
+            var actual = _gameWinnerService.Validate(_gameBoard);
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+
+        [TestMethod]
+        public void PlayerWithAllSpacesInThirdRowIsWinner()
+        {
+            const char expected = 'X';
+            for(var rowIndex = 0; rowIndex < 3; rowIndex++)
+            {
+                _gameBoard[2, rowIndex] = expected;
+            }
+            var actual = _gameWinnerService.Validate(_gameBoard);
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+
+        [TestMethod]
         public void PlayerWithAllSpacesInFirstColumnIsWinner()
         {
             const char expected = 'X';
@@ -67,6 +91,5 @@ namespace TicTacToe.UnitTests
             var actual = _gameWinnerService.Validate(_gameBoard);
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
-        // AKJSHDKJDGHKJ
     }
 }

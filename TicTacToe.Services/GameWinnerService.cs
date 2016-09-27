@@ -28,61 +28,18 @@ namespace TicTacToe.Services
 
         private static char CheckForThreeInARowInVerticalColumn(char[,] gameBoard)
         {
-            var rowOneChar = gameBoard[0, 0];
-            var rowTwoChar = gameBoard[1, 0];
-            var rowThreeChar = gameBoard[2, 0];
-            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
-                rowThreeChar == 'X')
+            for (int columnNum = 0; columnNum < 3; columnNum++)
             {
-                return rowOneChar;
+                if (gameBoard[0, columnNum] == 'X' && gameBoard[1, columnNum] == 'X' && gameBoard[2, columnNum] == 'X')
+                    return 'X';
             }
-            rowOneChar = gameBoard[0, 1];
-            rowTwoChar = gameBoard[1, 1];
-            rowThreeChar = gameBoard[2, 1];
-            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
-                rowThreeChar == 'X')
-            {
-                return rowOneChar;
-            }
-            rowOneChar = gameBoard[0, 2];
-            rowTwoChar = gameBoard[1, 2];
-            rowThreeChar = gameBoard[2, 2];
-            if (rowOneChar == 'X' && rowTwoChar == 'X' &&
-                rowThreeChar == 'X')
-            {
-                return rowOneChar;
-            }
+
             return SymbolForNoWinner;
 
         }
 
         private static char CheckForThreeInARowInHorizontalRow(char[,] gameBoard)
         {
-            //var columnOneChar = gameBoard[0, 0];
-            //var columnTwoChar = gameBoard[0, 1];
-            //var columnThreeChar = gameBoard[0, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' && 
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-            //columnOneChar = gameBoard[1, 0];
-            //columnTwoChar = gameBoard[1, 1];
-            //columnThreeChar = gameBoard[1, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' &&
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-            //columnOneChar = gameBoard[2, 0];
-            //columnTwoChar = gameBoard[2, 1];
-            //columnThreeChar = gameBoard[2, 2];
-            //if (columnOneChar == 'X' && columnTwoChar == 'X' &&
-            //    columnThreeChar == 'X')
-            //{
-            //    return columnOneChar;
-            //}
-
             for(int rowNum = 0; rowNum < 3; rowNum++)
             {
                 if (gameBoard[rowNum, 0] == 'X' && gameBoard[rowNum, 1] == 'X' && gameBoard[rowNum, 2] == 'X')

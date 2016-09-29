@@ -7,7 +7,6 @@ namespace TicTacToe.Services
 {
     public static class GameLogic
     {
-
         private static char[,] gameBoard = new char[3, 3] 
                 {
                     { ' ', ' ', ' ' },
@@ -161,6 +160,20 @@ namespace TicTacToe.Services
                 GameWinnerService.PlayerScoreX++;
             else
                 GameWinnerService.PlayerScoreY++;
+        }
+
+        public static bool CheckFullBoard()
+        {
+            for(int y = 0; y < 3; y++)
+            {
+                for(int x = 0; x < 3; x++)
+                {
+                    if (GameBoard[y, x] == ' ')
+                        return false;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -72,5 +72,16 @@ namespace TicTacToe.Services
             }
             return SymbolForNoWinner;
         }
+
+        public static bool CheckWinner()
+        {
+            IGameWinnerService gameWinnerService = new GameWinnerService();
+
+            if (gameWinnerService.Validate(GameLogic.GameBoard) != ' ')
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

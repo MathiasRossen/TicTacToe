@@ -19,6 +19,7 @@ namespace TicTacToe.Game
                 do
                 {
                     Console.Clear();
+                    Console.WriteLine("X Points: {0} \nY Points: {1}", GameWinnerService.PlayerScoreX, GameWinnerService.PlayerScoreY);
                     DrawGameBoard();
                     Console.WriteLine();
                     Console.WriteLine("Current player: {0}", GameWinnerService.CurrentPlayer);
@@ -27,8 +28,10 @@ namespace TicTacToe.Game
                 }
                 while (!GameLogic.SetPosition(input));
 
-                if (GameLogic.CheckWinner())
+                if (GameWinnerService.CheckWinner())
                 {
+                    Console.Clear();
+                    DrawGameBoard();
                     Console.WriteLine();
                     Console.WriteLine("Player {0} has won!", GameWinnerService.CurrentPlayer);
                     GameLogic.AddScore(GameWinnerService.CurrentPlayer);
@@ -38,6 +41,8 @@ namespace TicTacToe.Game
 
                 if (GameLogic.CheckFullBoard())
                 {
+                    Console.Clear();
+                    DrawGameBoard();
                     Console.WriteLine();
                     Console.WriteLine("This match is a draw.");
                     Console.ReadLine();

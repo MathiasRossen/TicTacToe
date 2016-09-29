@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TicTacToe.Services;
 
 namespace TicTacToe.Game
 {
@@ -11,6 +6,8 @@ namespace TicTacToe.Game
     {        
         static void Main(string[] args)
         {
+            Console.Title = "Tic Tac Toe";
+
             MainGame mainGame = new MainGame();
             mainGame.GameLoop();
         }

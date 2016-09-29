@@ -21,10 +21,15 @@ namespace TicTacToe.Services
             get { return gameBoard;  }
         }
 
-        public static bool SetPosition(int pos)
+        public static bool SetPosition(string input)
         {
 
-            switch (pos)
+            int i;
+
+            if (!Validate(input, out i))
+                return false;
+
+            switch (i)
             {
                 case 1:
                     if (IsFieldEmpty(0,0))
@@ -109,6 +114,26 @@ namespace TicTacToe.Services
             if (GameBoard[y, x] == ' ')
                 return true;
             return false;
+        }
+
+        public static bool Validate(string input, out int i)
+        {
+
+            int number;
+
+            if (int.TryParse(input, out number))
+            {
+                if (number > 0 && number < 10)
+                {
+                    i = number;
+                    return true;
+                }
+                    
+            }
+
+            i = number;
+            return false;
+
         }
 
     }

@@ -13,6 +13,7 @@ namespace TicTacToe.Services
     public class GameWinnerService : IGameWinnerService
     {
         private const char SymbolForNoWinner = ' ';
+        public static char CurrentPlayer = 'X';
 
         public char Validate(char[,] gameBoard)
         {
@@ -30,8 +31,8 @@ namespace TicTacToe.Services
         {
             for (int columnNum = 0; columnNum < 3; columnNum++)
             {
-                if (gameBoard[0, columnNum] == 'X' && gameBoard[1, columnNum] == 'X' && gameBoard[2, columnNum] == 'X')
-                    return 'X';
+                if (gameBoard[0, columnNum] == CurrentPlayer && gameBoard[1, columnNum] == CurrentPlayer && gameBoard[2, columnNum] == CurrentPlayer)
+                    return CurrentPlayer;
             }
 
             return SymbolForNoWinner;
@@ -42,8 +43,8 @@ namespace TicTacToe.Services
         {
             for(int rowNum = 0; rowNum < 3; rowNum++)
             {
-                if (gameBoard[rowNum, 0] == 'X' && gameBoard[rowNum, 1] == 'X' && gameBoard[rowNum, 2] == 'X')
-                    return 'X';
+                if (gameBoard[rowNum, 0] == CurrentPlayer && gameBoard[rowNum, 1] == CurrentPlayer && gameBoard[rowNum, 2] == CurrentPlayer)
+                    return CurrentPlayer;
             }
 
             return SymbolForNoWinner;
@@ -54,16 +55,16 @@ namespace TicTacToe.Services
             var cellOneChar = gameBoard[0, 0];
             var cellTwoChar = gameBoard[1, 1];
             var cellThreeChar = gameBoard[2, 2];
-            if (cellOneChar == 'X' && cellTwoChar == 'X' &&
-                cellThreeChar == 'X')
+            if (cellOneChar == CurrentPlayer && cellTwoChar == CurrentPlayer &&
+                cellThreeChar == CurrentPlayer)
             {
                 return cellOneChar;
             }
             cellOneChar = gameBoard[0, 2];
             cellTwoChar = gameBoard[1, 1];
             cellThreeChar = gameBoard[2, 0];
-            if (cellOneChar == 'X' && cellTwoChar == 'X' &&
-                cellThreeChar == 'X')
+            if (cellOneChar == CurrentPlayer && cellTwoChar == CurrentPlayer &&
+                cellThreeChar == CurrentPlayer)
             {
                 return cellOneChar;
             }

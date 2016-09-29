@@ -137,7 +137,7 @@ namespace TicTacToe.UnitTests
                 {'X', ' ', ' '},
             };
 
-            Assert.AreEqual(" ", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual(' ', _gameWinnerService.Validate(_gameBoard));
 
             _gameBoard = new char[3, 3] {
                 {'X', ' ', 'X'},
@@ -145,8 +145,47 @@ namespace TicTacToe.UnitTests
                 {' ', ' ', ' '},
             };
 
-            Assert.AreEqual(" ", _gameWinnerService.Validate(_gameBoard).ToString());
+            Assert.AreEqual(' ', _gameWinnerService.Validate(_gameBoard));
         }
-        //bund comment
+
+        [TestMethod]
+        public void PlayerOWinsTopRow()
+        {
+            GameWinnerService.CurrentPlayer = 'O';
+
+            _gameBoard = new char[3, 3] {
+                {'O', 'O', 'O'},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+            };
+
+            Assert.AreEqual('O', _gameWinnerService.Validate(_gameBoard));       
+        }
+
+        [TestMethod]
+        public void PlayerOWinsColumnTwo()
+        {
+            _gameBoard = new char[3, 3] {
+                {' ', 'O', ' '},
+                {' ', 'O', ' '},
+                {' ', 'O', ' '},
+            };
+
+            Assert.AreEqual('O', _gameWinnerService.Validate(_gameBoard));
+        }
+
+        [TestMethod]
+        public void PlayerOWinsDiagonally()
+        {
+            _gameBoard = new char[3, 3] {
+                {'O', ' ', ' '},
+                {' ', 'O', ' '},
+                {' ', ' ', 'O'},
+            };
+
+            Assert.AreEqual('O', _gameWinnerService.Validate(_gameBoard));
+        }
+
+
     }
 }

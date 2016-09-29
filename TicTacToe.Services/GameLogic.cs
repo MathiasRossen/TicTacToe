@@ -136,5 +136,15 @@ namespace TicTacToe.Services
 
         }
 
+        public static void NextPlayer()
+        {
+
+            if (GameWinnerService.CurrentPlayer == 'X')
+                GameWinnerService.CurrentPlayer = 'O';
+            else
+                GameWinnerService.CurrentPlayer = 'X';
+
+        }
+
     }
 }

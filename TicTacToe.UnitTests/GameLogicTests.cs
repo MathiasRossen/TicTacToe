@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TicTacToe.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TicTacToe.UnitTests
@@ -9,10 +10,37 @@ namespace TicTacToe.UnitTests
     [TestClass]
     class GameLogicTests
     {
-        [TestMethod]
-        public void GameBoardTest()
-        {
+        
+      
 
+        [TestMethod]
+        public void TestIfGameInputIsBetweenOneandNine()
+        {
+            int lowerbound = 1;
+            int upperbound = 9;
+            int result;
+
+            for (int i = lowerbound; i <= upperbound; i++)
+            {
+                Assert.IsTrue(GameLogic.Validate(i.ToString(), out result));
+            }
         }
+
+        [TestMethod]
+        public void AssertIfLettersReturnFalse()
+        {
+            int result;
+            Assert.IsFalse(GameLogic.Validate("aaa", out result));
+            Assert.IsTrue(result == 0);
+        }
+
+        [TestMethod]
+        public void DoPlayersSwitchBetweenTurns()
+        {
+            GameWinnerService.CurrentPlayer = 'X';
+            GameLogic.NextPlayer();
+            Assert.AreEqual('O', GameWinnerService.CurrentPlayer);
+        }
+
     }
 }

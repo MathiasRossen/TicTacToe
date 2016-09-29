@@ -35,6 +35,7 @@ namespace TicTacToe.UnitTests
         [TestMethod]
         public void PlayerWithAllSpacesInTopRowIsWinner()
         {
+            GameWinnerService.CurrentPlayer = 'X';
             _gameBoard = new char[3, 3] {
                 {'X', 'X', 'X'},
                 {' ', ' ', ' '},
@@ -47,6 +48,7 @@ namespace TicTacToe.UnitTests
         [TestMethod]
         public void PlayerWithAllSpacesInSecondRowIsWinner()
         {
+            GameWinnerService.CurrentPlayer = 'X';
             _gameBoard = new char[3, 3] {
                 {' ', ' ', ' '},
                 {'X', 'X', 'X'},
@@ -70,6 +72,7 @@ namespace TicTacToe.UnitTests
         [TestMethod]
         public void PlayerWithAllSpacesInFirstColumnIsWinner()
         {
+            GameWinnerService.CurrentPlayer = 'X';
             _gameBoard = new char[3, 3] {
                 {'X', ' ', ' '},
                 {'X', ' ', ' '},
@@ -82,6 +85,7 @@ namespace TicTacToe.UnitTests
         [TestMethod]
         public void PlayerWithAllSpacesInSecondColumnIsWinner()
         {
+            GameWinnerService.CurrentPlayer = 'X';
             _gameBoard = new char[3, 3] {
                 {' ', 'X', ' '},
                 {' ', 'X', ' '},
@@ -94,6 +98,7 @@ namespace TicTacToe.UnitTests
         [TestMethod]
         public void PlayerWithAllSpacesInThirdColumnIsWinner()
         {
+            GameWinnerService.CurrentPlayer = 'X';
             _gameBoard = new char[3, 3] {
                 {' ', ' ', 'X'},
                 {' ', ' ', 'X'},

@@ -14,6 +14,8 @@ namespace TicTacToe.Services
     {
         private const char SymbolForNoWinner = ' ';
         public static char CurrentPlayer = 'X';
+        public static int PlayerScoreX;
+        public static int PlayerScoreY;
 
         public char Validate(char[,] gameBoard)
         {
@@ -25,6 +27,14 @@ namespace TicTacToe.Services
                 return currentWinningSymbol;
             currentWinningSymbol = CheckForThreeInARowDiagonally(gameBoard);
             return currentWinningSymbol;
+        }
+
+        public static void AddScore(char player)
+        {
+            if (player == 'X')
+                PlayerScoreX++;
+            else
+                PlayerScoreY++;
         }
 
         private static char CheckForThreeInARowInVerticalColumn(char[,] gameBoard)

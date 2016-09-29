@@ -12,6 +12,7 @@ namespace TicTacToe.Game
         public void GameLoop()
         {
             DrawGameRules();
+            GameLogic.ResetGame();
 
             do
             {
@@ -25,6 +26,23 @@ namespace TicTacToe.Game
                     input = Console.ReadLine();
                 }
                 while (!GameLogic.SetPosition(input));
+
+                if (GameLogic.CheckWinner())
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Player {0} has won!", GameWinnerService.CurrentPlayer);
+                    GameLogic.AddScore(GameWinnerService.CurrentPlayer);
+                    Console.ReadLine();
+                    GameLogic.ResetGame();
+                }
+
+                if (GameLogic.CheckFullBoard())
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("This match is a draw.");
+                    Console.ReadLine();
+                    GameLogic.ResetGame();
+                }
 
                 GameLogic.NextPlayer();
             }

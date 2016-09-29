@@ -29,14 +29,6 @@ namespace TicTacToe.Services
             return currentWinningSymbol;
         }
 
-        public static void AddScore(char player)
-        {
-            if (player == 'X')
-                PlayerScoreX++;
-            else
-                PlayerScoreY++;
-        }
-
         private static char CheckForThreeInARowInVerticalColumn(char[,] gameBoard)
         {
             for (int columnNum = 0; columnNum < 3; columnNum++)

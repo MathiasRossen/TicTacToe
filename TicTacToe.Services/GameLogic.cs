@@ -29,7 +29,6 @@ namespace TicTacToe.Services
                     { ' ', ' ', ' ' },
                     { ' ', ' ', ' ' }
                 };
-            GameWinnerService.CurrentPlayer = 'X';
         }
 
         public static bool SetPosition(string input)
@@ -156,6 +155,12 @@ namespace TicTacToe.Services
                 GameWinnerService.CurrentPlayer = 'X';
 
         }
-
+        public static void AddScore(char player)
+        {
+            if (player == 'X')
+                GameWinnerService.PlayerScoreX++;
+            else
+                GameWinnerService.PlayerScoreY++;
+        }
     }
 }

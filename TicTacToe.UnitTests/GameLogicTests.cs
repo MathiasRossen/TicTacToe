@@ -8,10 +8,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TicTacToe.UnitTests
 {
     [TestClass]
-    class GameLogicTests
+    public class GameLogicTests
     {
-        
-      
+        [TestInitialize]
+        public void SetUpUnitTests()
+        {
+            
+        }
+          
 
         [TestMethod]
         public void TestIfGameInputIsBetweenOneandNine()

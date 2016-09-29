@@ -21,6 +21,17 @@ namespace TicTacToe.Services
             get { return gameBoard;  }
         }
 
+        public static void ResetGame()
+        {
+            GameBoard = new char[3, 3]
+                {
+                    { ' ', ' ', ' ' },
+                    { ' ', ' ', ' ' },
+                    { ' ', ' ', ' ' }
+                };
+            GameWinnerService.CurrentPlayer = 'X';
+        }
+
         public static bool SetPosition(string input)
         {
 
@@ -131,7 +142,7 @@ namespace TicTacToe.Services
                     
             }
 
-            i = number;
+            i = 0;
             return false;
 
         }

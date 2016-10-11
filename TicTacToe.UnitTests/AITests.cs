@@ -129,14 +129,14 @@ namespace TicTacToe.UnitTests
         {
             gameBoard = new char[3, 3]
             {
-                { 'O', 'O', ' ' },
+                { ' ', ' ', 'X' },
                 { 'X', 'X', ' ' },
-                { ' ', ' ', 'X' }
+                { 'O', 'O', ' ' }
             };
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            Assert.AreEqual('O', gameBoard[0, 2]);
+            Assert.AreEqual('O', gameBoard[2, 2]);
         }
 
         [TestMethod]
@@ -144,14 +144,14 @@ namespace TicTacToe.UnitTests
         {
             gameBoard = new char[3, 3]
             {
-                { 'X', ' ', ' ' },
+                { ' ', ' ', 'O' },
                 { 'X', 'O', ' ' },
-                { 'O', ' ', 'X' }
+                { ' ', 'X', 'X' }
             };
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            Assert.AreEqual('O', gameBoard[0, 2]);
+            Assert.AreEqual('O', gameBoard[2, 0]);
         }
     }
 }

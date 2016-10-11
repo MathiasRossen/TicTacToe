@@ -29,14 +29,7 @@ namespace TicTacToe.UnitTests
             AI.Symbol = 'X';
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { ' ', ' ', ' ' },
-                { ' ', 'X', ' ' },
-                { ' ', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('X', gameBoard[1, 1]);
         }
 
         [TestMethod]
@@ -46,21 +39,14 @@ namespace TicTacToe.UnitTests
 
             gameBoard = new char[3, 3]
             {
-                { 'X', ' ', ' ' },
                 { ' ', ' ', ' ' },
+                { ' ', 'X', ' ' },
                 { ' ', ' ', ' ' }
             };
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'O', ' ', ' ' },
-                { ' ', 'X', ' ' },
-                { ' ', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[0, 0]);
         }
 
         [TestMethod]
@@ -75,36 +61,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'X', ' ', ' ' },
-                { ' ', 'O', ' ' },
-                { ' ', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
-        }
-
-        [TestMethod]
-        public void HighestPrioSquareTaken()
-        {
-            gameBoard = new char[3, 3]
-            {
-                { ' ', ' ', ' ' },
-                { ' ', 'X', ' ' },
-                { ' ', ' ', ' ' }
-            };
-
-            gameBoard = AI.TakeTurn(gameBoard);
-
-            char[,] expected = new char[3, 3]
-            {
-                { 'O', ' ', ' ' },
-                { ' ', 'X', ' ' },
-                { ' ', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[1, 1]);
         }
 
         [TestMethod]
@@ -119,14 +76,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'X', ' ', ' ' },
-                { 'X', 'O', ' ' },
-                { 'O', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[2, 0]);
         }
 
         [TestMethod]
@@ -141,14 +91,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'O', ' ', ' ' },
-                { 'X', 'X', 'O' },
-                { ' ', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[2, 1]);
         }
 
         [TestMethod]
@@ -163,14 +106,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'O', ' ', 'X' },
-                { ' ', 'X', ' ' },
-                { 'O', ' ', ' ' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[2, 0]);
         }
 
         [TestMethod]
@@ -185,14 +121,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'X', 'O', ' ' },
-                { 'X', 'O', ' ' },
-                { ' ', 'O', 'X' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[2, 1]);
         }
 
         [TestMethod]
@@ -207,14 +136,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'O', 'O', 'O' },
-                { 'X', 'X', ' ' },
-                { ' ', ' ', 'X' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[0, 2]);
         }
 
         [TestMethod]
@@ -229,14 +151,7 @@ namespace TicTacToe.UnitTests
 
             gameBoard = AI.TakeTurn(gameBoard);
 
-            char[,] expected = new char[3, 3]
-            {
-                { 'X', ' ', 'O' },
-                { 'X', 'O', ' ' },
-                { 'O', ' ', 'X' }
-            };
-
-            Assert.AreEqual(expected, gameBoard);
+            Assert.AreEqual('O', gameBoard[0, 2]);
         }
     }
 }

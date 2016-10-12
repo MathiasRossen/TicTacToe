@@ -107,28 +107,28 @@
             {
                 if(i == 1)
                 {
-                    if (gameBoard[1, 1] == Symbol && gameBoard[0, 0] == Symbol)
+                    if (gameBoard[1, 1] == Symbol && gameBoard[0, 0] == Symbol && gameBoard[2, 2] == ' ')
                     {
                         y = 2;
                         x = 2;
                         return true;
                     }
 
-                    if (gameBoard[1, 1] == Symbol && gameBoard[0, 2] == Symbol)
+                    if (gameBoard[1, 1] == Symbol && gameBoard[0, 2] == Symbol && gameBoard[2, 0] == ' ')
                     {
                         y = 2;
                         x = 0;
                         return true;
                     }
 
-                    if (gameBoard[1, 1] == Symbol && gameBoard[2, 0] == Symbol)
+                    if (gameBoard[1, 1] == Symbol && gameBoard[2, 0] == Symbol && gameBoard[0, 2] == ' ')
                     {
                         y = 0;
                         x = 2;
                         return true;
                     }
 
-                    if (gameBoard[1, 1] == Symbol && gameBoard[2, 2] == Symbol)
+                    if (gameBoard[1, 1] == Symbol && gameBoard[2, 2] == Symbol && gameBoard[0, 0] == ' ')
                     {
                         y = 0;
                         x = 0;
@@ -136,14 +136,14 @@
                     }
                 }
 
-                if (gameBoard[1, i] == Symbol && gameBoard[0, i] == Symbol)
+                if (gameBoard[1, i] == Symbol && gameBoard[0, i] == Symbol && gameBoard[2, i] == ' ')
                 {
                     y = 2;
                     x = i;
                     return true;
                 }
 
-                if (gameBoard[1, i] == Symbol && gameBoard[2, i] == Symbol)
+                if (gameBoard[1, i] == Symbol && gameBoard[2, i] == Symbol && gameBoard[0, i] == ' ')
                 {
                     y = 0;
                     x = i;
@@ -153,14 +153,14 @@
 
             for (int i = 0; i < 3; i++)
             {
-                if (gameBoard[i, 1] == Symbol && gameBoard[i, 0] == Symbol)
+                if (gameBoard[i, 1] == Symbol && gameBoard[i, 0] == Symbol && gameBoard[i, 2] == ' ')
                 {
                     y = i;
                     x = 2;
                     return true;
                 }
 
-                if (gameBoard[i, 1] == Symbol && gameBoard[i, 2] == Symbol)
+                if (gameBoard[i, 1] == Symbol && gameBoard[i, 2] == Symbol && gameBoard[i, 0] == ' ')
                 {
                     y = i;
                     x = 0;

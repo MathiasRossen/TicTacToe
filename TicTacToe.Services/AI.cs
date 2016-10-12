@@ -68,21 +68,10 @@
 
         public static string TakeTurn(char[,] gameBoard)
         {
-            int highestX = 0, highestY = 0, highestVal = 0;
+            int highestX = 0, highestY = 0;
             int[,] boardValues = CalculateValues(gameBoard);
 
-            for(int y = 0; y < 3; y++)
-            {
-                for(int x = 0; x < 3; x++)
-                {
-                    if (boardValues[y, x] > highestVal && gameBoard[y, x] == ' ')
-                    {
-                        highestVal = boardValues[y, x];
-                        highestX = x;
-                        highestY = y;
-                    }
-                }
-            }
+            
 
             int newX, newY;
             if(CanWin(gameBoard, out newY, out newX))
@@ -95,12 +84,36 @@
                 highestY = newY;
                 highestX = newX;
             }
+            else
+            {
+                DefaultMove(gameBoard, boardValues, out highestY, out highestX);
+                
+            }
 
             //gameBoard[highestY, highestX] = Symbol;
 
             return ConvertTurnToPosition(highestY, highestX);
         }
 
+        private static void DefaultMove(char[,] gameBoard, int[,] boardValues, out int highestY, out int highestX)
+        {
+            int highestVal = 0;
+            highestX = 0;
+            highestY = 0;
+
+            for (int y = 0; y < 3; y++)
+            {
+                for (int x = 0; x < 3; x++)
+                {
+                    if (boardValues[y, x] > highestVal && gameBoard[y, x] == ' ')
+                    {
+                        highestVal = boardValues[y, x];
+                        highestX = x;
+                        highestY = y;
+                    }
+                }
+            }
+        }
         private static bool CanWin(char[,] gameBoard, out int y, out int x)
         {
             for (int i = 0; i < 3; i++)

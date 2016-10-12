@@ -28,7 +28,7 @@ namespace TicTacToe.Game
                     Console.WriteLine("Current player: {0}", GameWinnerService.CurrentPlayer);
                     Console.Write("Insert a number from 1-9: ");
 
-                    if (GameWinnerService.CurrentPlayer == 'O')
+                    if ((GameWinnerService.CurrentPlayer == 'X' && playerOne == PlayerType.AI) || (GameWinnerService.CurrentPlayer == 'O' && playerTwo == PlayerType.AI))
                     {
                         AI.Symbol = GameWinnerService.CurrentPlayer;
                         input = AI.TakeTurn(GameLogic.GameBoard);

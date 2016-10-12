@@ -4,6 +4,17 @@
     {
         public static char Symbol = 'O';
 
+        public static char OppositeOfSymbol
+        {
+            get
+            {
+                if (Symbol == 'O')
+                    return 'X';
+                return 'O';
+            }
+        }
+
+
         private static int[,] CalculateValues(char[,] gameBoard)
         {
             int[,] boardValues = new int[3, 3]
@@ -75,6 +86,11 @@
 
             int newX, newY;
             if(CanWin(gameBoard, out newY, out newX))
+            {
+                highestY = newY;
+                highestX = newX;
+            }
+            else if (CanBlock(gameBoard, out newY, out newX))
             {
                 highestY = newY;
                 highestX = newX;
@@ -154,6 +170,42 @@
             y = 0;
             x = 0;
             return false;
+        }
+
+        private static bool CanBlock(char[,] gameBoard, out int y, out int x)
+        {
+
+            y = 0;
+            x = 0;
+
+            // Check vertically
+            for (int i = 0; i <= 2; i++)
+            {
+                if (gameBoard[i, 1] == OppositeOfSymbol && gameBoard[i, 2] == OppositeOfSymbol && gameBoard[i, 0] == ' ') { y = i; x = 0; return true; }
+                if (gameBoard[i, 0] == OppositeOfSymbol && gameBoard[i, 2] == OppositeOfSymbol && gameBoard[i, 1] == ' ') { y = i; x = 1; return true; }
+                if (gameBoard[i, 0] == OppositeOfSymbol && gameBoard[i, 1] == OppositeOfSymbol && gameBoard[i, 2] == ' ') { y = i; x = 2; return true; }
+            }
+
+            // Check horizontally
+            for (int i = 0; i <= 2; i++)
+            {
+                if (gameBoard[1, i] == OppositeOfSymbol && gameBoard[2, i] == OppositeOfSymbol && gameBoard[0, i] == ' ') { y = 0; x = i; return true; }
+                if (gameBoard[0, i] == OppositeOfSymbol && gameBoard[2, i] == OppositeOfSymbol && gameBoard[1, i] == ' ') { y = 1; x = i; return true; }
+                if (gameBoard[0, i] == OppositeOfSymbol && gameBoard[1, i] == OppositeOfSymbol && gameBoard[2, i] == ' ') { y = 2; x = i; return true; }
+            }
+
+            // Check diagonally top-left to bottom-right
+            if (gameBoard[0, 0] == OppositeOfSymbol && gameBoard[1, 1] == OppositeOfSymbol && gameBoard[2, 2] == ' ') { y = 2; x = 2; return true; }
+            if (gameBoard[0, 0] == OppositeOfSymbol && gameBoard[2, 2] == OppositeOfSymbol && gameBoard[1, 1] == ' ') { y = 1; x = 1; return true; }
+            if (gameBoard[1, 1] == OppositeOfSymbol && gameBoard[2, 2] == OppositeOfSymbol && gameBoard[0, 0] == ' ') { y = 0; x = 0; return true; }
+
+            // Check diagonally top-right to bottom-left
+            if (gameBoard[0, 2] == OppositeOfSymbol && gameBoard[1, 1] == OppositeOfSymbol && gameBoard[2, 0] == ' ') { y = 2; x = 0; return true; }
+            if (gameBoard[2, 0] == OppositeOfSymbol && gameBoard[1, 1] == OppositeOfSymbol && gameBoard[0, 2] == ' ') { y = 0; x = 2; return true; }
+            if (gameBoard[0, 2] == OppositeOfSymbol && gameBoard[2, 0] == OppositeOfSymbol && gameBoard[1, 1] == ' ') { y = 1; x = 1; return true; }
+
+            return false;
+
         }
 
         private static string ConvertTurnToPosition(int y, int x)

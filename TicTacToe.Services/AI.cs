@@ -55,7 +55,7 @@
             return boardValues;
         }
 
-        public static char[,] TakeTurn(char[,] gameBoard)
+        public static string TakeTurn(char[,] gameBoard)
         {
             int highestX = 0, highestY = 0, highestVal = 0;
             int[,] boardValues = CalculateValues(gameBoard);
@@ -80,9 +80,9 @@
                 highestX = newX;
             }
 
-            gameBoard[highestY, highestX] = Symbol;
+            //gameBoard[highestY, highestX] = Symbol;
 
-            return gameBoard;
+            return ConvertTurnToPosition(highestY, highestX);
         }
 
         private static bool CanWin(char[,] gameBoard, out int y, out int x)
@@ -154,6 +154,38 @@
             y = 0;
             x = 0;
             return false;
+        }
+
+        private static string ConvertTurnToPosition(int y, int x)
+        {
+            if (y == 0 && x == 0)
+                return "1";
+
+            if (y == 0 && x == 1)
+                return "2";
+
+            if (y == 0 && x == 2)
+                return "3";
+
+            if (y == 1 && x == 0)
+                return "4";
+
+            if (y == 1 && x == 1)
+                return "5";
+
+            if (y == 1 && x == 2)
+                return "6";
+
+            if (y == 2 && x == 0)
+                return "7";
+
+            if (y == 2 && x == 1)
+                return "8";
+
+            if (y == 2 && x == 2)
+                return "9";
+
+            return "";
         }
     }
 }

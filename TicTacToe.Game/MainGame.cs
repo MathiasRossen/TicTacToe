@@ -3,16 +3,19 @@ using TicTacToe.Services;
 
 namespace TicTacToe.Game
 {
-    
+    enum PlayerType { Human, AI };
     internal class MainGame
     {
         private bool gameRunning = true;
         private string input;
+        private PlayerType playerOne, playerTwo;
 
         public void GameLoop()
         {
             DrawGameRules();
             GameLogic.ResetGame();
+
+            ChoosePlayers();
 
             do
             {
@@ -24,7 +27,14 @@ namespace TicTacToe.Game
                     Console.WriteLine();
                     Console.WriteLine("Current player: {0}", GameWinnerService.CurrentPlayer);
                     Console.Write("Insert a number from 1-9: ");
-                    input = Console.ReadLine();
+
+                    if (GameWinnerService.CurrentPlayer == 'O')
+                    {
+                        AI.Symbol = GameWinnerService.CurrentPlayer;
+                        input = AI.TakeTurn(GameLogic.GameBoard);
+                    }
+                    else
+                        input = Console.ReadLine();
                 }
                 while (!GameLogic.SetPosition(input));
 
@@ -81,87 +91,61 @@ namespace TicTacToe.Game
             Console.ReadLine();
         }
 
-        /*
-        IGameWinnerService gameWinnerService;
-        private char[,] gameBoard;
-        private string input;
-        /*
-        internal void GameLoop()
+        public void ChoosePlayers()
         {
-            bool gameRunning = true;
-            gameBoard = new char[3, 3] 
-                {
-                    { ' ', ' ', ' ' },
-                    { ' ', ' ', ' ' },
-                    { ' ', ' ', ' '}
-                };
-            gameWinnerService = new GameWinnerService();
+            bool inputErr = false;
 
             do
             {
                 Console.Clear();
-                Console.WriteLine();
-                DrawGameBoard();
+                Console.WriteLine("Choose the type of player X:");
+                Console.WriteLine(" 1. Human");
+                Console.WriteLine(" 2. AI");
+                Console.Write("Choice: ");
                 input = Console.ReadLine();
-                PlaceXAtPos(Int32.Parse(input));
 
-                if(gameWinnerService.Validate(gameBoard) != ' ')
+                switch (input)
                 {
-                    Console.Clear();
-                    Console.WriteLine();
-                    DrawGameBoard();
-                    Console.WriteLine("YOU WON!");
-                    Console.ReadLine();
+                    case "1":
+                        playerOne = PlayerType.Human;
+                        inputErr = false;
+                        break;
+                    case "2":
+                        playerOne = PlayerType.AI;
+                        inputErr = false;
+                        break;
+                    default:
+                        inputErr = true;
+                        break;
                 }
             }
-            while (gameRunning);
-        }
-        /*
-        internal void DrawGameBoard()
-        {
-            for(int y = 0; y < 3; y++)
-            {
-                for(int x = 0; x < 3; x++)
-                {
-                    Console.Write("[" + gameBoard[y, x] + "] ");
-                }
-                Console.WriteLine();
-            }
-        }
+            while (inputErr);
 
-        internal void PlaceXAtPos(int pos)
-        {
-            switch (pos)
+            do
             {
-                case 1:
-                    gameBoard[0, 0] = 'X';
-                    break;
-                case 2:
-                    gameBoard[0, 1] = 'X';
-                    break;
-                case 3:
-                    gameBoard[0, 2] = 'X';
-                    break;
-                case 4:
-                    gameBoard[1, 0] = 'X';
-                    break;
-                case 5:
-                    gameBoard[1, 1] = 'X';
-                    break;
-                case 6:
-                    gameBoard[1, 2] = 'X';
-                    break;
-                case 7:
-                    gameBoard[2, 0] = 'X';
-                    break;
-                case 8:
-                    gameBoard[2, 1] = 'X';
-                    break;
-                case 9:
-                    gameBoard[2, 2] = 'X';
-                    break;
+                Console.Clear();
+                Console.WriteLine("Choose the type of player O:");
+                Console.WriteLine(" 1. Human");
+                Console.WriteLine(" 2. AI");
+                Console.Write("Choice: ");
+                input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        playerTwo = PlayerType.Human;
+                        inputErr = false;
+                        break;
+                    case "2":
+                        playerTwo = PlayerType.AI;
+                        inputErr = false;
+                        break;
+                    default:
+                        inputErr = true;
+                        break;
+                }
             }
+            while (inputErr);
         }
-        */
     }
 }

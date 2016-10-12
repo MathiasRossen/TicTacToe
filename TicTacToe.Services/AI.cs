@@ -68,31 +68,23 @@
 
         public static string TakeTurn(char[,] gameBoard)
         {
-            int highestX = 0, highestY = 0;
+            int newX = 0, newY = 0;
             int[,] boardValues = CalculateValues(gameBoard);
 
-            
-
-            int newX, newY;
-            if(CanWin(gameBoard, out newY, out newX))
+            if (CanWin(gameBoard, out newY, out newX))
             {
-                highestY = newY;
-                highestX = newX;
+
             }
             else if (CanBlock(gameBoard, out newY, out newX))
             {
-                highestY = newY;
-                highestX = newX;
+
             }
             else
             {
-                DefaultMove(gameBoard, boardValues, out highestY, out highestX);
-                
+                DefaultMove(gameBoard, boardValues, out newY, out newX);
             }
 
-            //gameBoard[highestY, highestX] = Symbol;
-
-            return ConvertTurnToPosition(highestY, highestX);
+            return ConvertTurnToPosition(newY, newX);
         }
 
         private static void DefaultMove(char[,] gameBoard, int[,] boardValues, out int highestY, out int highestX)
